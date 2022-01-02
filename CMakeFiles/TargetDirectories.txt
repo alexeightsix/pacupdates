@@ -1,0 +1,4 @@
+/var/dev/pacupdates/CMakeFiles/rebuild_cache.dir
+/var/dev/pacupdates/CMakeFiles/edit_cache.dir
+/var/dev/pacupdates/CMakeFiles/pacupdates.dir
+/var/dev/pacupdates/CMakeFiles/pacupdates_autogen.dir

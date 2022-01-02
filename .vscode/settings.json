@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "qdebug": "cpp",
+        "qapplication": "cpp",
+        "bitset": "cpp",
+        "random": "cpp"
+    }
+}
