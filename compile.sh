@@ -1,0 +1,1 @@
+/usr/bin/cmake --build /var/dev/build-pacupdates-Desktop-Debug --target all && sudo rm -rf /var/lib/pacman/db.lck && /var/dev/build-pacupdates-Desktop-Debug/pacupdates && cp /var/dev/build-pacupdates-Desktop-Debug/pacupdates ./bin/pacupdates 

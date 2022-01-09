@@ -32,6 +32,9 @@
 
 MainWindow::MainWindow(QWidget * parent): QMainWindow(parent), ui(new Ui::MainWindow)
 {
+
+    MainWindow::isAlreadyRunning();
+
     if (getuid() == 0) {
         int res = showPopup(QMessageBox::Warning, "Application is running in elevated permissions.", "Application is running in elevated permissions. Avoid running as root/sudo.", false);
     }
@@ -484,7 +487,7 @@ void MainWindow::processOutput()
         process->closeWriteChannel();
     } else if (output.contains("[y/N")) {
         int response = showPopup(QMessageBox::Question,output, output);
-        response == (QMessageBox::Yes ? process->write("y") : process->write("n"));
+        //response == (QMessageBox::Yes ? process->write("y") : process->write("n"));
         process->closeWriteChannel();
     }
 }
@@ -501,4 +504,13 @@ void MainWindow::on_readyReadStandardOutput()
     } else if ((currentProcess == "/usr/bin/pacman" || currentProcess == "/usr/bin/yay") && isUpdating) {
         MainWindow::processOutput();
     }     
+}
+
+void MainWindow::isAlreadyRunning(){
+    QString thisBinary = QCoreApplication::applicationFilePath();
+
+    int running = system("test $(ps aux | grep "+thisBinary.toUtf8()+" | grep -v grep --count) -eq 1");
+
+    if (running)
+      MainWindow::showPopup(QMessageBox::Critical, "Application Already Running", "Another instance of this application is already running!");
 }

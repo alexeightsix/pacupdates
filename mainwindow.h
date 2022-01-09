@@ -68,6 +68,7 @@ public:
 private:
     Ui::MainWindow *ui;
     bool closing;
+    void isAlreadyRunning();
 private slots:
     void on_updatePackagesButtonClicked();
     void on_refreshPackagesButtonClicked();
